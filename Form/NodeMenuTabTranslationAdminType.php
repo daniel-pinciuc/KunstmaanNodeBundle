@@ -18,6 +18,7 @@ class NodeMenuTabTranslationAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('slug', 'slug', array('required' => false));
+        $builder->add('url', 'slug', array('required' => false));        
         $builder->add(
             'weight',
             'choice',
