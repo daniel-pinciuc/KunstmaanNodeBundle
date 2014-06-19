@@ -32,7 +32,7 @@ class NodeTranslationListener
         $this->logger = $logger;
     }
 
-    proteced $nodeTranslations = array();
+    protected $nodeTranslations = array();
 
     /**
      * onFlush doctrine event - collect all nodetranslations in scheduled entity updates here
