@@ -19,8 +19,8 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class NodeTranslationListener
 {
 
-    private $session;
-    private $logger;
+    protected $session;
+    protected $logger;
 
     /**
      * @param Session $session The session
@@ -81,7 +81,7 @@ class NodeTranslationListener
      * @param NodeTranslation $node The node
      * @param EntityManager   $em   The entity manager
      */
-    private function updateNodeChildren(NodeTranslation $node, EntityManager $em)
+    protected function updateNodeChildren(NodeTranslation $node, EntityManager $em)
     {
         $children = $node->getNode()->getChildren();
         if (count($children) > 0) {
@@ -109,7 +109,7 @@ class NodeTranslationListener
      *
      * @return NodeTranslation|bool Returns the node when all is well because it has to be saved.
      */
-    private function updateUrl(NodeTranslation $nodeTranslation, $em)
+    protected function updateUrl(NodeTranslation $nodeTranslation, $em)
     {
         $result = $this->ensureUniqueUrl($nodeTranslation, $em);
 
@@ -152,7 +152,7 @@ class NodeTranslationListener
      *
      * @return boolean
      */
-    private function ensureUniqueUrl(NodeTranslation &$translation, EntityManager $em, $flashes = array())
+    protected function ensureUniqueUrl(NodeTranslation &$translation, EntityManager $em, $flashes = array())
     {
         // Can't use GetRef here yet since the NodeVersions aren't loaded yet for some reason.
         $pnv = $translation->getPublicNodeVersion();
@@ -214,7 +214,7 @@ class NodeTranslationListener
      *
      * @return string Incremented string.
      */
-    private static function IncrementString($string, $append = '-v')
+    protected static function IncrementString($string, $append = '-v')
     {
         $finalDigitGrabberRegex = '/\d+$/';
         $matches = array();
